@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 
-import { ATLAS_DB_URL, NODE_ENV} from './server.config';
+import { ATLAS_DB_URL, NODE_ENV} from './server.config.js';
 async function connectToDB(){
 
     try{

@@ -1,5 +1,5 @@
-import logger from "../config/logger.config";
-import BaseError from "../errors/base.error";
+import logger from "../config/logger.config.js";
+import BaseError from "../errors/base.error.js";
 import { StatusCodes } from "http-status-codes";
 function errorHandler(err, req, res, next) {
   if (err instanceof BaseError) {

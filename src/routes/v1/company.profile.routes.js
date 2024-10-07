@@ -1,15 +1,13 @@
 // routes/companyProfile.routes.js
 import express from 'express';
-import {
-  createCompanyProfile,
-  getAllCompanyProfiles,
-  getCompanyProfileById,
-} from '../../controller/company.profile.controller.js';
-
+import CompanyProfileController from '../../controller/company.profile.controller.js'; // Correctly importing the default export
+import upload from '../../utils/fileUpload.js';
 const companyProfileRouter = express.Router();
+const companyProfileController = new CompanyProfileController();
 
-companyProfileRouter.post('/', createCompanyProfile);
-companyProfileRouter.get('/', getAllCompanyProfiles);
-companyProfileRouter.get('/:id', getCompanyProfileById);
 
+
+companyProfileRouter.post('/register', upload.single('companyLogo'), (req, res, next) => {
+  companyProfileController.createCompanyProfile(req, res, next);
+});
 export default companyProfileRouter;

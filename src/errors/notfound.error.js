@@ -1,7 +1,7 @@
 
-const BaseError = require('./base.error');
 
-const {StatusCodes} = require('http-status-codes');
+import BaseError from './base.error.js';
+import { StatusCodes } from 'http-status-codes';
 class NotFound extends BaseError {
 
     constructor(resourceName,resourceValue) {

@@ -3,11 +3,11 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
-import {PORT} from './config/server.config'
+import {PORT} from './config/server.config.js'
 
-import apiRouter from './routes';
-import errorHandler from './utils/errorHandler';
-import connectToDB from './config/db.config';
+import apiRouter from './routes/index.js';
+import errorHandler from './utils/errorHandler.js';
+import connectToDB from './config/db.config.js';
 
 const app = express();
 

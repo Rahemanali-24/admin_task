@@ -1,4 +1,4 @@
-import CompanyProfile from "../models/company.profile.model";
+import CompanyProfile from "../models/company.profile.model.js";
 import NotFound from "../errors/notfound.error.js";
 
 class CompanyProfileRepository {

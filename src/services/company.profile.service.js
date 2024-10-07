@@ -6,7 +6,14 @@ class CompanyProfileService {
   }
 
   async createCompanyProfile(profileData) {
-    return this.companyProfileRepository.createCompanyProfile(profileData);
+    try {
+        const profile = await this.companyProfileRepository.createCompanyProfile(profileData);
+        logger.info(`New company profile created: ${profile._id}`);
+        return profile;
+      } catch (error) {
+        logger.error('Error creating company profile', { error: error.message });
+        throw error;
+      }
   }
 
   async getCompanyProfileById(id) {

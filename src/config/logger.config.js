@@ -1,5 +1,6 @@
 import winston from 'winston';
-const { LOG_DB_URL } = require('./server.config');
+
+import { LOG_DB_URL } from './server.config.js';
 import 'winston-mongodb';
 
 const allowedTransports = [];
