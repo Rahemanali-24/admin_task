@@ -11,7 +11,11 @@ class CompanyProfileService {
         logger.info(`New company profile created: ${profile._id}`);
         return profile;
       } catch (error) {
-        logger.error('Error creating company profile', { error: error.message });
+        logger.error('Error creating company profile', { 
+          error: error.message, 
+          stack: error.stack, 
+          profileData
+      });
         throw error;
       }
   }
