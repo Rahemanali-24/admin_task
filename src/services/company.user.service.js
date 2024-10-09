@@ -26,6 +26,8 @@ class CompanyUserService{
            
             // logger.info(`New company user registered: ${user._id}`);
             logger.info(`New company user registered: ${request}`);
+            logger.info(`Using email: ${process.env.EMAIL}`);
+
             
             return { user, otp ,token };
         }catch(error){
@@ -35,6 +37,11 @@ class CompanyUserService{
             //     requestBody: request, // Optionally log the request body for debugging
             // });
             logger.error('error',error);
+            logger.error('Error during registration', {
+                error: err.message,
+                stack: err.stack,
+                email: process.env.EMAIL, // Log the email to ensure it's correct
+            });
             throw error; 
         }
 
