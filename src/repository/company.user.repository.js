@@ -21,6 +21,15 @@ class CompanyUserRepository {
         }
     }
 
+    async getCompanyUserByEmailPassword(email){
+        try{
+            const companyUser = await CompanyUser.findOne({email}).select('+password');
+            return companyUser;
+        }catch(err){
+            throw err;
+        }
+    }
+
     async getCompanyUserCount(){
         try{
             const count = await CompanyUser.countDocuments({});
