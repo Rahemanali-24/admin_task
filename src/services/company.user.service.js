@@ -131,7 +131,7 @@ class CompanyUserService {
 
 
   async sendForgotPasswordEmail(email, origin) {
-    const user = await companyUserRepository.getCompanyUserByEmail(email);
+    const user = await this.companyUserRepository.getCompanyUserByEmail(email);
     if (!user) {
       throw new Error('User Not Found');
     }

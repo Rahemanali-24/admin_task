@@ -12,7 +12,10 @@ companyUserRouter.post('/resend-otp', (req, res, next) => companyUserController.
 
 companyUserRouter.post('/forget-password', (req, res, next) => companyUserController.forgetPassword(req, res, next));
 
-companyUserRouter.post('/reset-password', (req, res, next) => companyUserController.verifyOtp(req, res, next));
+companyUserRouter.post('/reset-password', (req, res, next) => companyUserController.resetPassword(req, res, next));
+
+
+companyUserRouter.post('/verify-otp', (req, res, next) => companyUserController.verifyOtp(req, res, next));
 
 
 export default companyUserRouter;
