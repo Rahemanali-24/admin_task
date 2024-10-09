@@ -87,6 +87,56 @@ class CompanyUserController {
       return res.status(400).json({ success: false, message: error.message });
     }
   }
+
+  async resendOtp(req, res) {
+    try {
+      const { email } = req.body;
+      await this.companyUserService.resendOtp(email);
+      return res.status(200).json({ success: true, message: 'OTP Resent Successfully' });
+    } catch (error) {
+      return res.status(400).json({ success: false, message: error.message });
+    }
+  }
+
+
+  async forgetPassword(req, res) {
+    try {
+      const { email, origin } = req.body;
+      const token = await this.companyUserService.sendForgotPasswordEmail(email, origin);
+      return res.status(200).json({
+        success: true,
+        message: 'Forgot Password Email Sent Successfully.',
+        token,
+      });
+    } catch (error) {
+      return res.status(400).json({ success: false, message: error.message });
+    }
+  }
+
+
+  async verifyOtp(req, res) {
+    try {
+      const { email, otp } = req.body;
+      const message = await this.companyUserService.verifyOtp(email, otp);
+      return res.status(200).json({ success: true, message });
+    } catch (error) {
+      return res.status(400).json({ success: false, message: error.message });
+    }
+  }
+
+  async resetPassword(req, res) {
+    try {
+      const { token, newPassword } = req.body;
+      const user = await this.companyUserService.resetPassword(token, newPassword);
+      return res.status(200).json({
+        success: true,
+        message: 'Password Updated Successfully.',
+        user,
+      });
+    } catch (error) {
+      return res.status(400).json({ success: false, message: error.message });
+    }
+  }
 }
 
 

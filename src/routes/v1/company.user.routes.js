@@ -8,4 +8,11 @@ companyUserRouter.post('/register', (req, res, next) => companyUserController.re
 
 companyUserRouter.post('/login', (req, res, next) => companyUserController.loginUser(req, res, next));
 
+companyUserRouter.post('/resend-otp', (req, res, next) => companyUserController.resendOtp(req, res, next));
+
+companyUserRouter.post('/forget-password', (req, res, next) => companyUserController.forgetPassword(req, res, next));
+
+companyUserRouter.post('/reset-password', (req, res, next) => companyUserController.verifyOtp(req, res, next));
+
+
 export default companyUserRouter;

@@ -39,6 +39,14 @@ class CompanyUserRepository {
         }
     }
 
+    async updateUser(userId, updateData) {
+        return await CompanyUser.findByIdAndUpdate(userId, updateData, { new: true });
+    }
+
+    async findById(userId) {
+        return await CompanyUser.findById(userId).select('password');
+    }
+
   }
   
   
