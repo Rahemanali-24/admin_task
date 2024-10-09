@@ -10,7 +10,12 @@ function errorHandler(err, req, res, next) {
       data: {},
     });
   }
-  logger.error("something went wrong");
+  logger.error("An unexpected error occurred", {
+    message: err.message,
+    stack: err.stack,
+    requestPath: req.path,
+    requestBody: req.body,
+  });
   return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
     success: false,
     message: "Something went wrong",
